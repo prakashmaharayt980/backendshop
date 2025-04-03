@@ -1,0 +1,35 @@
+2025-04-03 15:15:42,035 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:15:48,109 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:15:57,906 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-03 15:15:58,592 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:16:01,227 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:19:23,963 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-03 15:19:23,968 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-03 15:19:39,681 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-03 15:19:52,014 - WARNING - Not Found: /api/inventory/orders/user/2/
+2025-04-03 15:19:56,705 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:19:59,714 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:20:16,570 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:26:59,643 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:27:01,786 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:30:28,769 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:31:42,573 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 15:32:02,131 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:37:05,295 - INFO - F:\funding app\backendServer\backend\inventory\ordermodels.py changed, reloading.
+2025-04-03 15:37:06,376 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:38:24,544 - INFO - F:\funding app\backendServer\backend\inventory\ordermodels.py changed, reloading.
+2025-04-03 15:38:25,499 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:38:57,587 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-03 15:38:58,659 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:39:15,803 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-03 15:39:16,593 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:40:32,211 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-03 15:40:33,138 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:40:46,780 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:40:52,502 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:42:58,107 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-03 15:42:58,902 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:43:05,441 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 15:46:28,318 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-03 15:46:29,275 - INFO - Watching for file changes with StatReloader
+2025-04-03 15:46:36,857 - WARNING - Unauthorized: /api/inventory/ordersplaced/
