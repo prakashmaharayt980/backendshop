@@ -2,7 +2,7 @@ from rest_framework import generics, permissions, status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from .ordermodels import Order
-from .orderserializers import OrderSerializer
+from .orderserializers import AdminOrderStatusUpdateSerializer, OrderSerializer
 
 # Endpoint for normal users to create an order
 class OrderCreateView(generics.CreateAPIView):
@@ -23,7 +23,7 @@ class OrderCreateView(generics.CreateAPIView):
         # Format the response as required
         response_data = {
             "id": order_instance.id,
-            "user_id": order_instance.user.id if order_instance.user else None,
+            "user_id": str(order_instance.user.id),
             "items": OrderSerializer(order_instance).data.get("order_items"),
             "total": order_instance.total_amount,
             "status": order_instance.status,
@@ -49,3 +49,37 @@ class OrderDetailView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
+    
+
+class AdminOrderListView(generics.ListAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+    def get_queryset(self):
+        return Order.objects.all()
+    
+class AdminOrderDetailView(generics.RetrieveAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAdminUser]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return Order.objects.all()
+
+
+class AdminOrderStatusUpdateView(generics.UpdateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = AdminOrderStatusUpdateSerializer
+    permission_classes = [permissions.IsAdminUser]
+    lookup_field = "id"
+
+    def update(self, request, *args, **kwargs):
+        """
+        Update only the `status` field of an order. Returns a 200 response if updated successfully.
+        """
+        partial = kwargs.pop('partial', True)  # allow partial update
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data, status=status.HTTP_200_OK)

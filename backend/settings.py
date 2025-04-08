@@ -15,7 +15,7 @@ import os
 import logging
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+from datetime import timedelta
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -30,7 +30,10 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:8001",
+]
 
 # Configure logging
 logging.basicConfig(
@@ -71,8 +74,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',
-            'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+
     ],
 }
 ROOT_URLCONF = 'backend.urls'
@@ -92,7 +95,13 @@ TEMPLATES = [
         },
     },
 ]
-
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Short-lived access token
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Longer refresh token
+    'ROTATE_REFRESH_TOKENS': True,  # Issue a new refresh token on use
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+}
 WSGI_APPLICATION = 'backend.wsgi.application'
 AUTH_USER_MODEL = 'account.CustomUser'
 
@@ -143,6 +152,16 @@ AUTHENTICATION_BACKENDS = [
     'account.admin.EmailBackend',  # Add this line
     'django.contrib.auth.backends.ModelBackend',  # Default
 ]
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'prakashmaharayt980@gmail.com'
+EMAIL_HOST_PASSWORD = 'juvjp lvym fbfa cpqfc'
+
+
 
 
 # Static files (CSS, JavaScript, Images)

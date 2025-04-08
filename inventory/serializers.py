@@ -1,7 +1,8 @@
 # serializers.py
+from os import read
 from rest_framework import serializers
 from django.core.files.storage import default_storage
-from .models import Product, ProductMedia
+from .models import Product, ProductMedia,ProductReview
 
 class ProductMediaSerializer(serializers.ModelSerializer):
     # This serializer is used to return media information
@@ -23,7 +24,8 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = [
             'id', 'name', 'description', 'price', 'category', 'stock',
-            'status', 'rating', 'imageUrl', 'media', 'media_files'
+            'status', 'rating', 'imageUrl', 'media', 'media_files','author',       
+            'genre',
         ]
 
     def create(self, validated_data):
@@ -45,3 +47,29 @@ class ProductSerializer(serializers.ModelSerializer):
                 description=f"Uploaded {file.name}"
             )
         return product
+    
+    def update(self, instance, validated_data):
+        media_files = validated_data.pop('media_files', [])
+
+        # update all other fields
+        for attr, val in validated_data.items():
+            setattr(instance, attr, val)
+        instance.save()
+
+        # append any new media files
+        for f in media_files:
+            file_type = f.content_type.split('/')[0]
+            ProductMedia.objects.create(
+                product=instance,
+                file=f,
+                file_type=file_type,
+                description=f"Uploaded {f.name}"
+            )
+        return instance
+    
+class ProductReviewSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(source='user.name',read_only=True)
+    class Meta:
+        model = ProductReview
+        fields = ['id', 'product', 'user', 'rating', 'comment', 'created_at']
+        read_only_fields = ['id', 'created_at','user']

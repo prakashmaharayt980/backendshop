@@ -33,3 +33,2749 @@
 2025-04-03 15:46:28,318 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
 2025-04-03 15:46:29,275 - INFO - Watching for file changes with StatReloader
 2025-04-03 15:46:36,857 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 16:16:44,773 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:17:25,001 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:20:21,648 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 16:22:02,195 - WARNING - Unauthorized: /api/account/userlogin/
+2025-04-03 16:22:18,369 - WARNING - Unauthorized: /api/account/userlogin/
+2025-04-03 16:23:55,358 - WARNING - Unauthorized: /api/account/userlogin/
+2025-04-03 16:24:07,292 - WARNING - Unauthorized: /api/account/userlogin/
+2025-04-03 16:24:28,204 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-03 16:24:30,186 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:24:58,885 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: inventory_orderitem.order_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    response = super().create(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 17, in perform_create
+    serializer.save(user=self.request.user)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 54, in create
+    order_item = OrderItemSerializer().create(item_data)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 22, in create
+    return OrderItem.objects.create(**validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: inventory_orderitem.order_id
+2025-04-03 16:32:46,349 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-03 16:32:47,616 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:33:20,501 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-03 16:33:52,700 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: inventory_orderitem.order_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    response = super().create(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 17, in perform_create
+    serializer.save(user=self.request.user)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 54, in create
+    order_item = OrderItemSerializer().create(item_data)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 22, in create
+    return OrderItem.objects.create(**validated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: inventory_orderitem.order_id
+2025-04-03 16:35:14,150 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-03 16:35:15,008 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:35:49,293 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:43:31,777 - WARNING - Not Found: /api/inventory/orders/user/2/
+2025-04-03 16:43:31,794 - WARNING - Not Found: /api/inventory/orders/user/2/
+2025-04-03 16:43:59,822 - WARNING - Not Found: /api/inventory/orders/user/
+2025-04-03 16:44:16,151 - WARNING - Not Found: /api/inventory/orders/user/
+2025-04-03 16:44:39,383 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-03 16:49:08,666 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-03 16:49:09,829 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:51:17,814 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-03 16:51:18,495 - INFO - Watching for file changes with StatReloader
+2025-04-03 16:52:50,723 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-03 16:55:36,648 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:55:40,783 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:58:52,306 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:58:55,077 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-03 16:59:05,793 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-05 07:52:46,306 - INFO - Watching for file changes with StatReloader
+2025-04-05 07:53:26,461 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-05 07:53:26,466 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-05 07:53:26,506 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-05 07:53:26,512 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-05 07:57:58,825 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-05 07:57:58,828 - WARNING - Not Found: /media/product_media/Screenshot_1.png
+2025-04-05 07:57:58,833 - WARNING - Not Found: /media/product_media/Screenshot_2.png
+2025-04-05 07:58:50,443 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-05 07:58:50,529 - WARNING - Not Found: /favicon.ico
+2025-04-05 08:00:52,992 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-05 08:00:54,160 - INFO - Watching for file changes with StatReloader
+2025-04-05 08:01:05,364 - WARNING - Not Found: /media/product_media/1ap3.jpeg
+2025-04-05 08:01:05,367 - WARNING - Not Found: /media/product_media/Screenshot_1.png
+2025-04-05 08:01:05,371 - WARNING - Not Found: /media/product_media/Screenshot_2.png
+2025-04-05 08:03:12,840 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-05 08:03:13,603 - INFO - Watching for file changes with StatReloader
+2025-04-05 08:05:44,210 - WARNING - Not Found: /favicon.ico
+2025-04-05 08:10:30,601 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-05 08:10:31,208 - INFO - Watching for file changes with StatReloader
+2025-04-05 08:10:40,805 - INFO - F:\funding app\backendServer\backend\backend\urls.py changed, reloading.
+2025-04-05 08:10:41,337 - INFO - Watching for file changes with StatReloader
+2025-04-05 09:30:55,304 - INFO - Watching for file changes with StatReloader
+2025-04-06 08:57:41,027 - INFO - Watching for file changes with StatReloader
+2025-04-06 11:06:43,341 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-06 11:06:46,301 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:19:06,856 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 13:20:58,380 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 13:23:24,285 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 13:23:24,460 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 13:39:39,314 - INFO - F:\funding app\backendServer\backend\account\serializer.py changed, reloading.
+2025-04-06 13:39:40,430 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:43:03,084 - INFO - F:\funding app\backendServer\backend\account\serializer.py changed, reloading.
+2025-04-06 13:43:03,736 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:44:03,274 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-06 13:44:03,840 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:44:34,735 - INFO - F:\funding app\backendServer\backend\account\serializer.py changed, reloading.
+2025-04-06 13:44:35,467 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:46:48,263 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-06 13:46:48,814 - INFO - Watching for file changes with StatReloader
+2025-04-06 13:47:00,369 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 13:47:00,382 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 13:47:41,717 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:00:56,397 - INFO - F:\funding app\backendServer\backend\inventory\models.py changed, reloading.
+2025-04-06 14:00:57,175 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:07:04,284 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-06 14:07:04,828 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:08:54,401 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:11:50,797 - INFO - F:\funding app\backendServer\backend\inventory\models.py changed, reloading.
+2025-04-06 14:11:51,452 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:12:43,970 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:13:54,380 - WARNING - Unauthorized: /api/inventory/products/add/
+2025-04-06 14:13:54,399 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 14:19:32,963 - ERROR - Internal Server Error: /api/inventory/products/add/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 67, in post
+    if serializer.is_valid():
+       ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `created_at` is not valid for model `Product` in `inventory.serializers.ProductSerializer`.
+2025-04-06 14:20:32,228 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-06 14:20:32,836 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:20:43,579 - ERROR - Internal Server Error: /api/inventory/products/add/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 67, in create
+    serializer.is_valid(raise_exception=True)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `created_at` is not valid for model `Product` in `inventory.serializers.ProductSerializer`.
+2025-04-06 14:20:49,747 - ERROR - Internal Server Error: /api/inventory/products/add/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 67, in create
+    serializer.is_valid(raise_exception=True)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `created_at` is not valid for model `Product` in `inventory.serializers.ProductSerializer`.
+2025-04-06 14:21:07,047 - ERROR - Internal Server Error: /api/inventory/products/add/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 67, in create
+    serializer.is_valid(raise_exception=True)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `created_at` is not valid for model `Product` in `inventory.serializers.ProductSerializer`.
+2025-04-06 14:21:27,413 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-06 14:21:27,953 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:34:30,698 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-06 14:34:31,317 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:34:40,615 - WARNING - Unauthorized: /api/account/userDetails/
+2025-04-06 14:34:40,655 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 14:34:43,641 - WARNING - Unauthorized: /api/account/userDetails/
+2025-04-06 14:49:59,555 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-06 14:50:00,331 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:51:22,361 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-06 14:51:22,928 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:52:00,942 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-06 14:52:01,530 - INFO - Watching for file changes with StatReloader
+2025-04-06 14:52:22,494 - WARNING - Unauthorized: /api/inventory/adminorders/
+2025-04-06 14:52:22,508 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 14:52:41,916 - WARNING - Unauthorized: /api/inventory/adminorders/
+2025-04-06 15:09:19,508 - WARNING - Unauthorized: /api/inventory/adminorders/
+2025-04-06 15:09:19,583 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 15:18:30,736 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-06 15:18:31,479 - INFO - Watching for file changes with StatReloader
+2025-04-06 15:24:51,504 - INFO - F:\funding app\backendServer\backend\inventory\ordermodels.py changed, reloading.
+2025-04-06 15:24:52,123 - INFO - Watching for file changes with StatReloader
+2025-04-06 17:50:06,541 - INFO - Watching for file changes with StatReloader
+2025-04-06 17:54:06,371 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_order
+2025-04-06 17:54:06,486 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_order
+2025-04-06 17:54:09,868 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_order
+2025-04-06 17:54:10,543 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_order
+2025-04-06 17:54:16,500 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:54:16,588 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:54:19,556 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:54:21,223 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:54:21,942 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:55:24,705 - WARNING - Unauthorized: /api/inventory/adminorders/
+2025-04-06 17:55:24,772 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 17:56:16,344 - ERROR - Internal Server Error: /api/inventory/adminorders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_order
+2025-04-06 17:56:18,016 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:56:22,224 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:57:05,624 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 17:57:33,876 - INFO - Watching for file changes with StatReloader
+2025-04-06 17:57:36,836 - ERROR - Internal Server Error: /api/inventory/products/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 20, in get_queryset
+    print("queryset : ", queryset.all())
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 376, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 18:03:52,271 - ERROR - Internal Server Error: /api/inventory/products/add/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 68, in create
+    product = serializer.save()
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\serializers.py", line 33, in create
+    product = Product.objects.create(**validated_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_product
+2025-04-06 18:05:28,086 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:11:23,419 - WARNING - Unauthorized: /api/inventory/adminorders/
+2025-04-06 18:11:23,546 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 18:13:45,523 - WARNING - Not Found: /
+2025-04-06 18:13:45,556 - WARNING - Not Found: /login
+2025-04-06 18:13:45,822 - WARNING - Not Found: /favicon.ico
+2025-04-06 18:14:12,860 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 18:14:12,866 - WARNING - Unauthorized: /api/inventory/products/
+2025-04-06 18:14:12,899 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 18:14:12,912 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 18:14:20,567 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:14:20,579 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:14:43,945 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:14:43,957 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:20:31,056 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-06 18:20:32,276 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:20:40,044 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:20:40,055 - WARNING - Not Found: /api/inventory/products/83935/
+2025-04-06 18:28:08,330 - WARNING - Not Found: /api/inventory/products/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-06 18:29:43,559 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-06 18:29:44,741 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:30:05,356 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-06 18:30:06,506 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:31:20,362 - WARNING - Bad Request: /api/inventory/ordersplaced/
+2025-04-06 18:34:30,611 - WARNING - Bad Request: /api/inventory/ordersplaced/
+2025-04-06 18:35:50,595 - WARNING - Bad Request: /api/inventory/ordersplaced/
+2025-04-06 18:39:45,959 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-06 18:39:47,629 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:39:50,025 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    request.data._mutable = True if hasattr(request.data, '_mutable') else False
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute '_mutable'
+2025-04-06 18:40:15,393 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-06 18:40:16,752 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:40:19,273 - WARNING - Bad Request: /api/inventory/ordersplaced/
+2025-04-06 18:45:43,455 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-06 18:45:44,846 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:45:56,161 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    response = super().create(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 17, in perform_create
+    serializer.save(user=self.request.user)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 49, in create
+    order = Order.objects.create(user=user, **validated_data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: django.db.models.query.QuerySet.create() got multiple values for keyword argument 'user'
+2025-04-06 18:46:42,437 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:46:45,748 - WARNING - Unauthorized: /api/inventory/ordersplaced/
+2025-04-06 18:46:45,852 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 18:47:15,288 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    response = super().create(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 17, in perform_create
+    serializer.save(user=self.request.user)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 49, in create
+    order = Order.objects.create(user=user, **validated_data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: django.db.models.query.QuerySet.create() got multiple values for keyword argument 'user'
+2025-04-06 18:49:30,244 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-06 18:49:31,819 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:49:32,515 - ERROR - Internal Server Error: /api/inventory/ordersplaced/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 194, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 20, in create
+    response = super().create(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "F:\funding app\backendServer\backend\inventory\orderviews.py", line 17, in perform_create
+    serializer.save(user=self.request.user)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\orderserializers.py", line 53, in create
+    product = item_data.pop('product')
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'product'
+2025-04-06 18:50:59,490 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-06 18:51:00,884 - INFO - Watching for file changes with StatReloader
+2025-04-06 18:51:55,510 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-06 18:51:56,784 - INFO - Watching for file changes with StatReloader
+2025-04-06 20:53:19,892 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-06 20:53:19,923 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-06 20:53:20,106 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-06 20:53:20,110 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 07:45:47,939 - INFO - Watching for file changes with StatReloader
+2025-04-07 07:53:19,914 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-07 07:53:21,363 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:05:01,765 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-07 08:05:01,775 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-07 08:05:01,891 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 08:05:01,892 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 08:20:11,706 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-07 08:20:13,270 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:20:26,651 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-07 08:20:26,658 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-07 08:20:26,688 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 08:20:26,700 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 08:21:39,683 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-07 08:21:40,783 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:22:09,383 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `media` is not valid for model `Order` in `inventory.orderserializers.OrderSerializer`.
+2025-04-07 08:22:09,491 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `media` is not valid for model `Order` in `inventory.orderserializers.OrderSerializer`.
+2025-04-07 08:24:26,197 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-07 08:24:27,426 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:24:36,273 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `media_files` is not valid for model `Order` in `inventory.orderserializers.OrderSerializer`.
+2025-04-07 08:24:36,374 - ERROR - Internal Server Error: /api/inventory/orders/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\generics.py", line 203, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `media_files` is not valid for model `Order` in `inventory.orderserializers.OrderSerializer`.
+2025-04-07 08:24:45,207 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-07 08:24:46,296 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:28:06,135 - INFO - F:\funding app\backendServer\backend\inventory\orderserializers.py changed, reloading.
+2025-04-07 08:28:07,598 - INFO - Watching for file changes with StatReloader
+2025-04-07 08:42:13,513 - WARNING - Not Found: /api/inventory/review/
+2025-04-07 08:55:26,012 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-07 08:55:28,111 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:07:27,244 - INFO - F:\funding app\backendServer\backend\inventory\models.py changed, reloading.
+2025-04-07 09:07:28,623 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:07:59,344 - WARNING - Bad Request: /api/inventory/createreview/
+2025-04-07 09:09:33,615 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-07 09:09:34,725 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:09:38,346 - WARNING - Bad Request: /api/inventory/createreview/
+2025-04-07 09:12:58,594 - INFO - F:\funding app\backendServer\backend\inventory\models.py changed, reloading.
+2025-04-07 09:12:59,798 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:13:42,608 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-07 09:13:44,104 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:14:11,194 - ERROR - Internal Server Error: /api/inventory/createreview/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: inventory_productreview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 114, in post
+    serializer.save()
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: inventory_productreview
+2025-04-07 09:15:29,661 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:15:33,551 - ERROR - Internal Server Error: /api/inventory/createreview/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: inventory_productreview.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\inventory\views.py", line 114, in post
+    serializer.save()
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: inventory_productreview.user_id
+2025-04-07 09:17:25,931 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-07 09:17:27,113 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:19:23,202 - INFO - F:\funding app\backendServer\backend\inventory\views.py changed, reloading.
+2025-04-07 09:19:24,518 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:25:41,044 - WARNING - Unauthorized: /api/inventory/products/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-07 09:25:41,070 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-07 09:26:33,396 - WARNING - Not Found: /api/inventory/review/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-07 09:26:33,405 - WARNING - Not Found: /api/inventory/review/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-07 09:26:37,341 - WARNING - Not Found: /api/inventory/review/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-07 09:26:37,352 - WARNING - Not Found: /api/inventory/review/83935e5a-8389-440d-9140-fe45b7d0cf7d/
+2025-04-07 09:32:18,529 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-07 09:32:19,166 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:33:56,741 - INFO - F:\funding app\backendServer\backend\inventory\serializers.py changed, reloading.
+2025-04-07 09:33:57,264 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:34:07,774 - INFO - F:\funding app\backendServer\backend\inventory\models.py changed, reloading.
+2025-04-07 09:34:08,296 - INFO - Watching for file changes with StatReloader
+2025-04-07 09:34:33,127 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:33:21,908 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 11:33:23,419 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:34:03,951 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:34:18,603 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 11:34:19,173 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:35:42,117 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-07 11:35:42,661 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:37:14,101 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 11:37:14,716 - INFO - Watching for file changes with StatReloader
+2025-04-07 11:46:15,211 - WARNING - Not Found: /
+2025-04-07 11:46:15,288 - WARNING - Not Found: /favicon.ico
+2025-04-07 11:46:19,537 - WARNING - Not Found: /login
+2025-04-07 11:46:21,559 - WARNING - Not Found: /login
+2025-04-07 12:05:02,069 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 12:05:02,963 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:05:57,756 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 12:05:58,371 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:18:46,966 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 12:18:47,845 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:19:13,722 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-07 12:19:14,389 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:21:43,520 - WARNING - Not Found: /src/main.tsx
+2025-04-07 12:21:43,569 - WARNING - Not Found: /@react-refresh
+2025-04-07 12:21:54,588 - WARNING - Not Found: /login
+2025-04-07 12:22:27,938 - WARNING - Not Found: /login
+2025-04-07 12:22:28,698 - WARNING - Not Found: /login
+2025-04-07 12:22:29,598 - WARNING - Not Found: /login
+2025-04-07 12:23:02,831 - WARNING - Not Found: /login
+2025-04-07 12:23:03,202 - WARNING - Not Found: /login
+2025-04-07 12:23:03,635 - WARNING - Not Found: /login
+2025-04-07 12:23:03,819 - WARNING - Not Found: /login
+2025-04-07 12:23:03,995 - WARNING - Not Found: /login
+2025-04-07 12:23:33,715 - WARNING - Not Found: /login
+2025-04-07 12:23:34,043 - WARNING - Not Found: /login
+2025-04-07 12:23:34,227 - WARNING - Not Found: /login
+2025-04-07 12:23:34,396 - WARNING - Not Found: /login
+2025-04-07 12:23:34,619 - WARNING - Not Found: /login
+2025-04-07 12:24:57,419 - WARNING - Not Found: /login
+2025-04-07 12:24:57,474 - WARNING - Not Found: /favicon.ico
+2025-04-07 12:25:25,268 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-07 12:25:26,037 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:25:27,589 - WARNING - Not Found: /login
+2025-04-07 12:40:04,548 - WARNING - Not Found: /src/main.tsx
+2025-04-07 12:40:11,660 - WARNING - Not Found: /
+2025-04-07 12:40:12,028 - WARNING - Not Found: /
+2025-04-07 12:40:12,980 - WARNING - Not Found: /
+2025-04-07 12:40:13,245 - WARNING - Not Found: /
+2025-04-07 12:40:21,094 - WARNING - Not Found: /login
+2025-04-07 12:40:41,556 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-07 12:40:42,342 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:42:54,156 - WARNING - Not Found: /src/main.tsx
+2025-04-07 12:42:54,192 - WARNING - Not Found: /@react-refresh
+2025-04-07 12:42:59,818 - WARNING - Not Found: /node_modules/vite/dist/client/env.mjs
+2025-04-07 12:42:59,839 - WARNING - Not Found: /src/components/ui/sonner.tsx
+2025-04-07 12:42:59,850 - WARNING - Not Found: /src/pages/NotFound.tsx
+2025-04-07 12:42:59,909 - WARNING - Not Found: /src/contexts/CartContext.tsx
+2025-04-07 12:43:00,601 - WARNING - Not Found: /login
+2025-04-07 12:43:00,786 - WARNING - Not Found: /login
+2025-04-07 12:43:00,952 - WARNING - Not Found: /login
+2025-04-07 12:43:08,128 - WARNING - Not Found: /login
+2025-04-07 12:43:53,888 - WARNING - Not Found: /
+2025-04-07 12:43:53,901 - WARNING - Not Found: /
+2025-04-07 12:45:31,861 - WARNING - Not Found: /src/main.tsx
+2025-04-07 12:45:35,273 - WARNING - Not Found: /@react-refresh
+2025-04-07 12:45:35,292 - WARNING - Not Found: /src/components/ui/tooltip.tsx
+2025-04-07 12:45:36,174 - WARNING - Not Found: /login
+2025-04-07 12:45:39,103 - WARNING - Not Found: /login
+2025-04-07 12:45:42,346 - WARNING - Not Found: /
+2025-04-07 12:45:44,695 - WARNING - Not Found: /
+2025-04-07 12:49:13,038 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 12:51:11,661 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-07 12:51:12,449 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:51:35,679 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 12:58:41,313 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:58:55,857 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 12:59:27,878 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 12:59:28,459 - INFO - Watching for file changes with StatReloader
+2025-04-07 12:59:36,775 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:01:02,686 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:01:28,713 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:06:07,408 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 13:06:08,131 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:08:00,885 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:10:19,876 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 13:10:20,490 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:20:48,902 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:28:34,375 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:28:50,304 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:38:00,519 - DEBUG - Making request: GET https://www.googleapis.com/oauth2/v1/certs
+2025-04-07 13:38:00,524 - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2025-04-07 13:38:00,752 - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 2967
+2025-04-07 13:38:00,778 - ERROR - Internal Server Error: /api/account/auth/google/
+2025-04-07 13:41:15,342 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 13:41:16,113 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:41:28,547 - DEBUG - Making request: GET https://www.googleapis.com/oauth2/v1/certs
+2025-04-07 13:41:28,551 - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2025-04-07 13:41:28,801 - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 2969
+2025-04-07 13:41:28,815 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 13:42:51,138 - INFO - F:\funding app\backendServer\backend\account\views.py changed, reloading.
+2025-04-07 13:42:51,716 - INFO - Watching for file changes with StatReloader
+2025-04-07 13:43:23,779 - DEBUG - Making request: GET https://www.googleapis.com/oauth2/v1/certs
+2025-04-07 13:43:23,781 - DEBUG - Starting new HTTPS connection (1): www.googleapis.com:443
+2025-04-07 13:43:23,985 - DEBUG - https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 2967
+2025-04-07 13:43:23,988 - WARNING - Bad Request: /api/account/auth/google/
+2025-04-07 14:18:44,403 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-07 14:18:45,251 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:28:56,742 - INFO - F:\funding app\backendServer\backend\account\ResetPassordSerializer.py changed, reloading.
+2025-04-07 14:28:57,297 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:28:59,935 - INFO - F:\funding app\backendServer\backend\account\ResetPasswordView.py changed, reloading.
+2025-04-07 14:29:00,497 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:33:03,908 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:33:19,770 - WARNING - Not Found: /api/account/forgotpassword/
+2025-04-07 14:34:38,866 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-07 14:34:39,443 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:34:41,621 - WARNING - Bad Request: /api/account/forgotpassword/
+2025-04-07 14:34:51,456 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-07 14:34:52,076 - INFO - Watching for file changes with StatReloader
+2025-04-07 14:35:03,387 - WARNING - Bad Request: /api/account/forgotpassword/
+2025-04-07 14:36:21,871 - ERROR - Internal Server Error: /api/account/forgotpassword/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\account\ResetPasswordView.py", line 34, in post
+    reset_link = f"{settings.FRONTEND_URL}/reset-password/?token={token}"
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Settings' object has no attribute 'FRONTEND_URL'
+2025-04-08 09:25:47,878 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:01:20,523 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 11:01:21,620 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:21:13,291 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-08 11:21:13,843 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:30:00,699 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:33:45,888 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 11:33:46,492 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:36:41,722 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 11:36:42,347 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:38:08,797 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 11:38:09,490 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:38:20,099 - INFO - Watching for file changes with StatReloader
+2025-04-08 11:45:30,953 - WARNING - Unauthorized: /api/account/register/
+2025-04-08 12:00:25,857 - WARNING - Not Found: /api/account/forgotpassword/
+2025-04-08 12:05:37,248 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-08 12:05:38,252 - INFO - Watching for file changes with StatReloader
+2025-04-08 12:06:14,795 - WARNING - Unauthorized: /api/account/userlogin/
+2025-04-08 12:20:08,630 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 12:20:09,471 - INFO - Watching for file changes with StatReloader
+2025-04-08 12:20:21,293 - ERROR - Internal Server Error: /api/account/requestOttp/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\account\v_PasswordRest.py", line 30, in post
+    send_mail(subject, message, None, [email])
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\__init__.py", line 88, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\message.py", line 301, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2297866e242sm92478495ad.164 - gsmtp')
+2025-04-08 12:29:07,831 - INFO - Watching for file changes with StatReloader
+2025-04-08 12:29:17,715 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 12:29:18,350 - INFO - Watching for file changes with StatReloader
+2025-04-08 12:29:23,536 - ERROR - Internal Server Error: /api/account/requestOttp/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\account\v_PasswordRest.py", line 30, in post
+    send_mail(subject, message, None, [email])
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\__init__.py", line 88, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\message.py", line 301, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-739d97effe5sm10050569b3a.61 - gsmtp')
+2025-04-08 12:32:21,665 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 12:32:22,324 - INFO - Watching for file changes with StatReloader
+2025-04-08 12:32:37,118 - ERROR - Internal Server Error: /api/account/requestOttp/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\account\v_PasswordRest.py", line 30, in post
+    send_mail(subject, message, None, [email])
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\__init__.py", line 88, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\message.py", line 301, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-739d97f1c4bsm9679319b3a.70 - gsmtp')
+2025-04-08 12:39:00,404 - ERROR - Internal Server Error: /api/account/requestOttp/
+Traceback (most recent call last):
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "F:\funding app\backendServer\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\backend\account\v_PasswordRest.py", line 30, in post
+    send_mail(subject, message, None, [email])
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\__init__.py", line 88, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\message.py", line 301, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "F:\funding app\backendServer\env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2297865e04bsm92685535ad.114 - gsmtp')
+2025-04-08 13:01:36,380 - INFO - F:\funding app\backendServer\backend\backend\settings.py changed, reloading.
+2025-04-08 13:01:37,142 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:13:11,439 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-08 13:13:12,524 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:15:54,454 - INFO - F:\funding app\backendServer\backend\inventory\orderviews.py changed, reloading.
+2025-04-08 13:15:55,032 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:16:08,516 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:17:32,153 - WARNING - Not Found: /
+2025-04-08 13:17:32,176 - WARNING - Not Found: /order-confirmation/4cc923e4-1e73-41ba-9514-6ad86a0943da
+2025-04-08 13:17:32,253 - WARNING - Not Found: /favicon.ico
+2025-04-08 13:24:13,780 - WARNING - Not Found: /api/account/userDetails/297764c9-0c64-4ef6-85b7-d3bb0f5f1aa2/
+2025-04-08 13:24:27,476 - WARNING - Not Found: /api/account/userDetails/297764c9-0c64-4ef6-85b7-d3bb0f5f1aa2/
+2025-04-08 13:24:38,061 - WARNING - Not Found: /api/account/userDetails/297764c9-0c64-4ef6-85b7-d3bb0f5f1aa2/
+2025-04-08 13:25:20,804 - INFO - F:\funding app\backendServer\backend\account\urls.py changed, reloading.
+2025-04-08 13:25:21,617 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:42:11,542 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-08 13:42:12,234 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:44:05,971 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-08 13:44:06,600 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:44:21,544 - INFO - F:\funding app\backendServer\backend\inventory\urls.py changed, reloading.
+2025-04-08 13:44:22,197 - INFO - Watching for file changes with StatReloader
+2025-04-08 13:44:43,838 - WARNING - Not Found: /api/inventory/orders/completed/update-status/
+2025-04-08 13:46:09,751 - WARNING - Not Found: /api/inventory/orders/processing/update-status/
+2025-04-08 13:46:43,058 - WARNING - Not Found: /api/inventory/orders/completed/update-status/
+2025-04-08 13:48:13,354 - WARNING - Not Found: /api/inventory/orders/processing/update-status/
+2025-04-08 13:49:59,158 - WARNING - Bad Request: /api/inventory/orders/4cc923e4-1e73-41ba-9514-6ad86a0943da/update-status/
+2025-04-08 15:01:53,225 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-08 15:01:53,280 - WARNING - Unauthorized: /api/inventory/orders/
+2025-04-08 15:01:53,432 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-08 15:01:53,439 - WARNING - Not Found: /api/account/token/refresh/
