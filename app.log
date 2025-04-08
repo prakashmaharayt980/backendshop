@@ -2779,3 +2779,15 @@ smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepte
 2025-04-08 15:01:53,280 - WARNING - Unauthorized: /api/inventory/orders/
 2025-04-08 15:01:53,432 - WARNING - Not Found: /api/account/token/refresh/
 2025-04-08 15:01:53,439 - WARNING - Not Found: /api/account/token/refresh/
+2025-04-08 16:50:34,105 - INFO - Watching for file changes with StatReloader
+2025-04-08 16:53:20,545 - WARNING - Not Found: /
+2025-04-08 16:53:20,678 - WARNING - Not Found: /favicon.ico
+2025-04-08 16:54:00,606 - WARNING - Not Found: /
+2025-04-08 16:54:01,224 - WARNING - Not Found: /
+2025-04-08 16:54:01,920 - WARNING - Not Found: /
+2025-04-08 16:54:09,564 - WARNING - Not Found: /
+2025-04-08 16:54:19,144 - WARNING - Not Found: /
+2025-04-08 16:54:24,854 - WARNING - Not Found: /api/inventory/media/product_media/1ap3.jpeg
+2025-04-08 16:54:37,568 - WARNING - Not Found: /api/inventory/media/product_media/1ap3.jpeg
+2025-04-08 16:59:43,189 - INFO - Serving on http://0.0.0.0:8000
+2025-04-08 17:00:46,066 - INFO - Serving on http://0.0.0.0:8000
