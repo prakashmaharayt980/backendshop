@@ -20,7 +20,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='your-production-domain,localhost,127.0.0.1', cast=Csv())
-
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:8000,http://localhost:8001', cast=Csv)
 # Application definition
 INSTALLED_APPS = [
     # Required for django-allauth
@@ -173,10 +176,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-# CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:8000,http://localhost:8001', cast=Csv)
+
 
 # Logging configuration
 LOGGING = {
