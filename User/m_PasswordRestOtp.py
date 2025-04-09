@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 class PasswordResetOtp(models.Model):
-    user =models.ForeignKey('account.CustomUser', on_delete=models.CASCADE)
+    user =models.ForeignKey('User.CustomUser', on_delete=models.CASCADE)
     otp=models.CharField(max_length=6)
     created_at=models.DateTimeField(auto_now_add=True)
     is_used=models.BooleanField(default=False)
