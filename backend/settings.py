@@ -19,8 +19,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='your-production-domain,localhost,127.0.0.1', cast=Csv())
-# CORS settings
+ALLOWED_HOSTS = [
+ " backendshop-production-963a.up.railway.app",".railway.app"
+]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS =[
