@@ -24,8 +24,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='your-production-domain,localhos
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS =[
-    https://backendshop-production-963a.up.railway.app,
-https://backendshop-production
+    'https://backendshop-production-963a.up.railway.app',
+'https://backendshop-production'
 ]
 # Application definition
 INSTALLED_APPS = [
