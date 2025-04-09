@@ -33,8 +33,8 @@ CORS_ALLOWED_ORIGINS =[
     'https://backendshop-production-963a.up.railway.app',
 'https://backendshop-production',
  'https://book-heaven-nine',
- "https://book-heaven-nine.vercel.app/",
- "https://shopkeeper-admin.vercel.app/login",
+ "https://book-heaven-nine.vercel.app",
+ "https://shopkeeper-admin.vercel.app",
  "https://shopkeeper-admin.vercel.app",
  "https://shopkeeper-admin"
 ]
