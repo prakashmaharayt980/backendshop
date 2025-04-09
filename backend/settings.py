@@ -23,7 +23,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='your-production-domain,localhos
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:8000,http://localhost:8001', cast=Csv)
+CORS_ALLOWED_ORIGINS =[
+    https://backendshop-production-963a.up.railway.app,
+https://backendshop-production
+]
 # Application definition
 INSTALLED_APPS = [
     # Required for django-allauth
