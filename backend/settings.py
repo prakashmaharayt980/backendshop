@@ -22,7 +22,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
  " backendshop-production-963a.up.railway.app",".railway.app",
  "book-heaven-nine.vercel.app",
- ".vercel.app"
+ ".vercel.app",
  "book-heaven",
  "shopkeeper-admin.vercel.app",
  "shopkeeper-admin"
@@ -32,7 +32,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS =[
     'https://backendshop-production-963a.up.railway.app',
 'https://backendshop-production',
- 'https://book-heaven-nine'
+ 'https://book-heaven-nine',
  "https://book-heaven-nine.vercel.app/",
  "https://shopkeeper-admin.vercel.app/login",
  "https://shopkeeper-admin.vercel.app",
