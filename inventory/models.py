@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.contrib.postgres.fields import ArrayField
+
 User = get_user_model()
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # ✅ UUID as PK
@@ -64,6 +64,6 @@ class ProductReview(models.Model):
     comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.PositiveIntegerField(default=0)
-    liked_by = ArrayField(models.CharField(max_length=255), default=list, blank=True)
+    # liked_by = ArrayField(models.CharField(max_length=255), default=list, blank=True)
     def __str__(self):
         return f"Review for {self.product.name} by {self.user.username} - {self.rating} stars"

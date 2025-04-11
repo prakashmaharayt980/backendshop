@@ -18,11 +18,11 @@ class ProductReviewSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(source='user.name', read_only=True)
     
     
-    likedBy = serializers.ListField(source='liked_by', read_only=True)
+    # likedBy = serializers.ListField(source='liked_by', read_only=True)
 
     class Meta:
         model = ProductReview
-        fields = ['id', 'product', 'user', 'rating', 'comment', 'created_at', 'likes', 'likedBy']
+        fields = ['id', 'product', 'user', 'rating', 'comment', 'created_at', 'likes']
         read_only_fields = ['id', 'created_at', 'user']
 
 # ------------------------------
