@@ -42,16 +42,9 @@ ALLOWED_METHODS = [
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://localhost:8001',
-    'http://localhost:8080',
-    'http://your-production-url.com',
-    'http://127.0.0.1',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:8080',
+'https://shopkeeper-admin.vercel.app',
 'https://backendshop-production-e1ec.up.railway.app',
 
-    'https://shopkeeper-admin.vercel.app',
 'https://book-heaven-nine.vercel.app'
     
 
