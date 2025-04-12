@@ -20,6 +20,7 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
+
     'backendshop-production-0a96.up.railway.app',
     'bookheavenshop.vercel.app',
     'shopkeeper-admin.vercel.app',
@@ -53,7 +54,10 @@ CORS_ALLOWED_ORIGINS = [
     'https://shopkeeper-admin.vercel.app',
 'https://book-heaven-nine.vercel.app'
     
+
+
 ]
+
 # Application definition
 INSTALLED_APPS = [
     # Required for django-allauth
@@ -80,7 +84,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # Serve static files efficiently using WhiteNoise
 
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -205,9 +208,11 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Django Sites and allauth settings
 SITE_ID = 2
+
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
 REST_USE_JWT = True
 
 SOCIALACCOUNT_PROVIDERS = {
