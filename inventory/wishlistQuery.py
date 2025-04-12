@@ -1,6 +1,4 @@
-import json
-from django.db import connection
-from psycopg2.extras import RealDictCursor
+
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
@@ -11,25 +9,14 @@ from .modelcartlist import Wishlist  # Assuming your Wishlist model is defined i
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_wishlist(request):
-    user_id = request.user.id
+    user = request.user
 
-    # Access the underlying DB-API connection and use its cursor() with the cursor_factory.
-    # Ensure connection.connection is available.
-    if connection.connection is None:
-        # Force connection initialization if necessary
-        connection.ensure_connection()
+    # Use Django ORM to fetch wishlist products for the user
+    wishlist_products = Product.objects.filter(
+        wish_list_product__user=user
+    ).values('id', 'name', 'description', 'price', 'image_url', 'stock')
 
-    with connection.connection.cursor(cursor_factory=RealDictCursor) as cursor:
-        query = """
-            SELECT p.id, p.name, p.description, p.price, p.image_url, p.stock
-            FROM inventory_product p
-            JOIN inventory_wishlist w ON p.id = w.product_id
-            WHERE w.user_id = %s
-        """
-        cursor.execute(query, [user_id])
-        wishlist_products = cursor.fetchall()  # Returns a list of dictionaries
-
-    return Response(wishlist_products)
+    return Response(list(wishlist_products))
 
 
 @api_view(['POST'])
