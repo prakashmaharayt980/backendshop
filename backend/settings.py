@@ -27,6 +27,7 @@ ALLOWED_HOSTS = [
     'shopkeeper-admin',
     '.vercel.app',
     'book-heaven-nine.vercel.app'
+    'backendshop-production-e1ec.up.railway.app'
 ]
 
 ALLOWED_METHODS = [
@@ -49,7 +50,7 @@ CORS_ALLOWED_ORIGINS = [
     # 'http://127.0.0.1',
     # 'http://127.0.0.1:8000',
     # 'http://127.0.0.1:8080'
-
+'https://backendshop-production-e1ec.up.railway.app/'
 
     'https://shopkeeper-admin.vercel.app',
 'https://book-heaven-nine.vercel.app'
