@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # ✅ UUID as PK
@@ -18,10 +19,15 @@ class Product(models.Model):
     category = models.CharField(max_length=50)
     stock = models.PositiveIntegerField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
-    rating = models.CharField(max_length=2, blank=True, null=True)
-    imageUrl = models.URLField(blank=True)
+    rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    image_url = models.URLField(blank=True)
     main_image = models.ImageField(upload_to='product_images/', blank=True, null=True)
-
+    totalpage = models.PositiveIntegerField(null=True, blank=True)
+    language = models.CharField(max_length=50, null=True, blank=True)
+    madeinwhere = models.CharField(max_length=100, null=True, blank=True)
+    ageproduct = models.CharField(max_length=50, null=True, blank=True)
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    is_new = models.BooleanField(default=True)
     def __str__(self):
         return self.name
 
@@ -57,6 +63,7 @@ class ProductReview(models.Model):
     rating = models.PositiveIntegerField()
     comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    likes = models.PositiveIntegerField(default=0)
+    # liked_by = ArrayField(models.CharField(max_length=255), default=list, blank=True)
     def __str__(self):
         return f"Review for {self.product.name} by {self.user.username} - {self.rating} stars"

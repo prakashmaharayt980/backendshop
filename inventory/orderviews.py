@@ -22,15 +22,18 @@ class OrderCreateView(generics.CreateAPIView):
         order_instance = Order.objects.get(id=order_id)
         # Format the response as required
         response_data = {
-            "id": order_instance.id,
-            "user_id": str(order_instance.user.id),
-            "items": OrderSerializer(order_instance).data.get("order_items"),
-            "total": order_instance.total_amount,
-            "status": order_instance.status,
-            "delivery_method": order_instance.delivery_method,
-            "delivery_address": order_instance.shipping_address,
-            "created_at": order_instance.created_at,
-        }
+          "id": order_instance.id,
+          "user_id": str(order_instance.user.id),
+          "items": OrderSerializer(order_instance).data.get("order_items"),
+          "total": order_instance.total_amount,
+          "status": order_instance.status,
+          "delivery_method": order_instance.delivery_method,
+          "delivery_address": order_instance.shipping_address,
+          "created_at": order_instance.created_at,
+          "sub_total": order_instance.subtotal,  # Added missing sub_total
+          "shipping_cost": order_instance.shipping_cost  ,
+          "ReceiverContact":order_instance.receiverContact
+            }
         return Response(response_data, status=status.HTTP_201_CREATED)
 
 # Endpoint for a normal user to list his/her orders

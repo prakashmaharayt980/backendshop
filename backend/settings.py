@@ -14,30 +14,50 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^hr*=wgra92qo40e@asw%y0=gd%sj')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
- " backendshop-production-963a.up.railway.app",".railway.app",
- "book-heaven-nine.vercel.app",
- ".vercel.app",
- "book-heaven",
- "shopkeeper-admin.vercel.app",
- "shopkeeper-admin"
+
+    'backendshop-production-0a96.up.railway.app',
+    'bookheavenshop.vercel.app',
+    'shopkeeper-admin.vercel.app',
+    'shopkeeper-admin',
+    '.vercel.app',
+    'book-heaven-nine.vercel.app'
 ]
+
+ALLOWED_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+# CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS =[
-    'https://backendshop-production-963a.up.railway.app',
-'https://backendshop-production',
- 'https://book-heaven-nine',
- "https://book-heaven-nine.vercel.app",
- "https://shopkeeper-admin.vercel.app",
- "https://shopkeeper-admin.vercel.app",
- "https://shopkeeper-admin"
+CORS_ALLOWED_ORIGINS = [
+    # 'http://localhost:8080',
+    # 'http://localhost:8001',
+    # 'http://localhost:8080',
+    # 'http://your-production-url.com',
+    # 'http://127.0.0.1',
+    # 'http://127.0.0.1:8000',
+    # 'http://127.0.0.1:8080'
+
+
+    'https://shopkeeper-admin.vercel.app',
+'https://book-heaven-nine.vercel.app'
+    
+
+
 ]
+
 # Application definition
 INSTALLED_APPS = [
     # Required for django-allauth
@@ -59,13 +79,12 @@ INSTALLED_APPS = [
 
     # Your project apps
     'inventory',
-    'User',
+    'user',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # Serve static files efficiently using WhiteNoise
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -98,14 +117,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-# Database
-# Using SQLite here; for production, consider PostgreSQL
+
+
+
+# DATABASES = {
+#     'default': dj_database_url.config('DATABASE_URL')
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': config('DB_HOST', default='localhost'),
+#         'PORT': config('DB_PORT', default='5432'),
+#     }
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -136,7 +170,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Use WhiteNoise to compress and serve static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -162,7 +196,7 @@ SIMPLE_JWT = {
 }
 
 # Custom User Model
-AUTH_USER_MODEL = 'User.CustomUser'
+AUTH_USER_MODEL = 'user.CustomUser'
 
 # Email settings for sending emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -174,8 +208,11 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Django Sites and allauth settings
 SITE_ID = 2
-ACCOUNT_LOGIN_METHODS = {'email': True}
+
+ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
 REST_USE_JWT = True
 
 SOCIALACCOUNT_PROVIDERS = {
