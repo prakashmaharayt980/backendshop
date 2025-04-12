@@ -9,7 +9,7 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from decouple import config, Csv
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,8 +49,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://your-production-url.com',
     'http://127.0.0.1',
     'http://127.0.0.1:8000',
-    'http://127.0.0.1:8080'
-'https://backendshop-production-e1ec.up.railway.app/'
+    'http://127.0.0.1:8080',
+'https://backendshop-production-e1ec.up.railway.app',
 
     'https://shopkeeper-admin.vercel.app',
 'https://book-heaven-nine.vercel.app'
