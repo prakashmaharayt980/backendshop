@@ -9,17 +9,18 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from decouple import config, Csv
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^hr*=wgra92qo40e@asw%y0=gd%sj')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
+
     'backendshop-production-0a96.up.railway.app',
     'bookheavenshop.vercel.app',
     'shopkeeper-admin.vercel.app',
@@ -42,19 +43,22 @@ ALLOWED_METHODS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    # 'http://localhost:8080',
-    # 'http://localhost:8001',
-    # 'http://localhost:8080',
-    # 'http://your-production-url.com',
-    # 'http://127.0.0.1',
-    # 'http://127.0.0.1:8000',
-    # 'http://127.0.0.1:8080'
+    'http://localhost:8080',
+    'http://localhost:8001',
+    'http://localhost:8080',
+    'http://your-production-url.com',
+    'http://127.0.0.1',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8080'
+'https://backendshop-production-e1ec.up.railway.app/'
 
-    'https://bookheavenshop.vercel.app',
     'https://shopkeeper-admin.vercel.app',
-
+'https://book-heaven-nine.vercel.app'
     
+
+
 ]
+
 # Application definition
 INSTALLED_APPS = [
     # Required for django-allauth
@@ -81,7 +85,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # Serve static files efficiently using WhiteNoise
 
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -206,9 +209,11 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Django Sites and allauth settings
 SITE_ID = 2
+
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
 REST_USE_JWT = True
 
 SOCIALACCOUNT_PROVIDERS = {
