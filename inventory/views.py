@@ -12,16 +12,25 @@ from django.conf import settings
 from django.db.models import Avg
 
 import pdb  # Python debugger
-
-# Configure logging
-logger = logging.getLogger(__name__)
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
         queryset = Product.objects.all().order_by('-id')
-        print("queryset : ", queryset.all())
-        print('new')
+        search_query = self.request.query_params.get('search', '')
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(author__icontains=search_query) |
+                Q(genre__icontains=search_query) |
+                Q(description__icontains=search_query) |
+                Q(category__icontains=search_query) |
+                Q(language__icontains=search_query) |
+                Q(madeinwhere__icontains=search_query)
+            )
+
+        # Keep existing specific filters
         filters = {
             'name': ('name__icontains', str),
             'category': ('category__icontains', str),
@@ -35,7 +44,6 @@ class ProductListView(generics.ListAPIView):
             value = self.request.query_params.get(param)
             if value:
                 try:
-                    # Price could be a range, so consider checking if the value contains "gte" or "lte" etc.
                     queryset = queryset.filter(**{filter_name: type_cast(value)})
                 except (ValueError, TypeError):
                     continue
@@ -45,7 +53,7 @@ class ProductListView(generics.ListAPIView):
             queryset = queryset.filter(stock__gt=0)
 
         return queryset
-
+    
 class ProductDetailView(APIView):
     
     

@@ -30,7 +30,7 @@ class Product(models.Model):
     is_new = models.BooleanField(default=True)
     def __str__(self):
         return self.name
-
+ 
     def get_media(self):
         return self.media.all()
 
