@@ -39,20 +39,12 @@ ALLOWED_METHODS = [
     'OPTIONS',
 ]
 
-# CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://localhost:8001',
-    'http://localhost:8080',
-    'http://your-production-url.com',
-    'http://127.0.0.1',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:8080',
+'https://shopkeeper-admin.vercel.app',
 'https://backendshop-production-e1ec.up.railway.app',
 
-    'https://shopkeeper-admin.vercel.app',
 'https://book-heaven-nine.vercel.app'
     
 
@@ -84,11 +76,12 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
 
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
     
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -189,7 +182,7 @@ REST_FRAMEWORK = {
 
 # SimpleJWT configuration
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,

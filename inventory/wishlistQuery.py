@@ -23,7 +23,6 @@ def get_wishlist(request):
     return Response(list(wishlist_products))
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_to_wishlist(request):
