@@ -48,7 +48,8 @@ CORS_ALLOWED_ORIGINS = [
 'https://book-heaven-nine.vercel.app',
 'backendshop-production-e1ec.up.railway.app',
 'https://backendshop-production-e1ec.up',
-'railway.app'
+'railway.app',
+    'https://thelocalmerket.vercel.app'
 
 ]
 
