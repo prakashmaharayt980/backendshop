@@ -26,7 +26,9 @@ ALLOWED_HOSTS = [
     'shopkeeper-admin.vercel.app',
     'shopkeeper-admin',
     '.vercel.app',
-    'book-heaven-nine.vercel.app'
+    'book-heaven-nine.vercel.app',
+    'thelocalmerket.vercel.app'
+    
 ]
 
 ALLOWED_METHODS = [
@@ -46,7 +48,9 @@ else:
     CORS_ALLOWED_ORIGINS = [
         'https://shopkeeper-admin.vercel.app',
         'https://book-heaven-nine.vercel.app',
-        'https://backendshop-production-e1ec.up.railway.app'
+        'https://backendshop-production-e1ec.up.railway.app',
+        'https://thelocalmerket.vercel.app'
+        
     ]
 
 
