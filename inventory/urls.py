@@ -2,6 +2,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .viewsPromoCode import validate_promocode
+
 from .addcartQuery import add_to_cart, get_cart
 from .wishlistQuery import add_to_wishlist, delete_from_wishlist, get_wishlist
 from .orderviews import OrderCreateView, OrderListView,AdminOrderListView, AdminOrderDetailView,AdminOrderStatusUpdateView
@@ -40,6 +42,11 @@ urlpatterns = [
     path('cart/add/', add_to_cart, name='add_to_cart'),
     path('cart/get/', get_cart, name='get_cart'),
     path('wishlist/get/', get_wishlist, name='get_wishlist'),
+
+
+
+    # promo
+    path('apply/promocode/', validate_promocode, name='validate_promocode'),
 ]
 
 

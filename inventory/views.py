@@ -1,3 +1,4 @@
+from venv import logger
 from django.db import connection
 from django.db.models import Q
 from rest_framework import generics, status
@@ -7,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import ValidationError
 from .models import Product
 from .serializers import ProductSerializer, ProductReviewSerializer
-import logging
+
 from django.conf import settings
 from django.db.models import Avg
 
@@ -72,7 +73,7 @@ class ProductDetailView(APIView):
             )
         
         # Serialize the product data (this serializer includes nested fields e.g., media and reviews)
-        serializer = ProductSerializer(product)
+        serializer = ProductSerializer(product,context={'request':request})
         
         # Aggregate meta information from related reviews
         total_reviews = product.reviews.count()
@@ -101,7 +102,7 @@ class ProductCreateView(generics.CreateAPIView):
     parser_classes = [MultiPartParser, FormParser]
     print('test')
     def post(self, request, *args, **kwargs):
-        logger.info(f"Received product creation request with data: {request.data}")
+        # logger.info(f"Received product creation request with data: {request.data}")
         print('test1')
         try:
             # Copy request data and gather files for 'media_files'
