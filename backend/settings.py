@@ -41,10 +41,7 @@ ALLOWED_METHODS = [
 ]
 
 
-if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOW_ALL_ORIGINS = False
     CORS_ALLOWED_ORIGINS = [
         'https://shopkeeper-admin.vercel.app',
         'https://book-heaven-nine.vercel.app',
