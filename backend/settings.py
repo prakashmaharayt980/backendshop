@@ -23,6 +23,7 @@ ALLOWED_HOSTS = [
 
     'backendshop-production-0a96.up.railway.app',
     'thelocalmarket.shop',
+    'www.thelocalmarket.shop',
     'shopkeeper-admin.vercel.app',
     'shopkeeper-admin',
     '.vercel.app',
