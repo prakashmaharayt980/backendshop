@@ -51,7 +51,7 @@ CORS_ALLOWED_ORIGINS = [
 'railway.app',
     'https://thelocalmerket.vercel.app',
     'https://www.thelocalmarket.shop',
-    'thelocalmarket.shop',
+    'https://thelocalmarket.shop',
     
 
 ]
