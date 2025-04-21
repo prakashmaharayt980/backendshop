@@ -22,12 +22,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
 
     'backendshop-production-0a96.up.railway.app',
-    'bookheavenshop.vercel.app',
+    'thelocalmarket.shop',
     'shopkeeper-admin.vercel.app',
     'shopkeeper-admin',
     '.vercel.app',
-    'bookheavenshop'
-    ,'*'
+    'thelocalmarket'
+
 ]
 
 ALLOWED_METHODS = [
@@ -49,7 +49,10 @@ CORS_ALLOWED_ORIGINS = [
 'backendshop-production-e1ec.up.railway.app',
 'https://backendshop-production-e1ec.up',
 'railway.app',
-    'https://thelocalmerket.vercel.app'
+    'https://thelocalmerket.vercel.app',
+    'https://www.thelocalmarket.shop',
+    'thelocalmarket.shop',
+    
 
 ]
 
