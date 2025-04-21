@@ -27,7 +27,8 @@ ALLOWED_HOSTS = [
     'shopkeeper-admin.vercel.app',
     'shopkeeper-admin',
     '.vercel.app',
-    'thelocalmarket'
+    'thelocalmarket',
+    'thelocalmerket.vercel.app'
 
 ]
 
