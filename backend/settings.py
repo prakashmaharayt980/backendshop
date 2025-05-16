@@ -18,7 +18,7 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
+FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
 ALLOWED_HOSTS = [
 
     'backendshop-production-0a96.up.railway.app',
@@ -70,8 +70,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+ 'rest_framework.authtoken',
 
-    # Your project apps
+   'notification',
     'inventory',
     'user',
 ]
@@ -118,23 +119,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # DATABASES = {
 #     'default': dj_database_url.config('DATABASE_URL')
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config('DB_NAME'),
-#         'USER': config('DB_USER'),
-#         'PASSWORD': config('DB_PASSWORD'),
-#         'HOST': config('DB_HOST', default='localhost'),
-#         'PORT': config('DB_PORT', default='5432'),
-#     }
-# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -202,7 +204,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Django Sites and allauth settings
-SITE_ID = 2
+SITE_ID = 1
 
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
@@ -223,23 +225,9 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-
-# Logging configuration
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'app.log'),
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
+  'version': 1,
+  'disable_existing_loggers': False,
+  'handlers': { 'console': { 'class': 'logging.StreamHandler' } },
+  'root': { 'handlers': ['console'], 'level': 'DEBUG' },
 }

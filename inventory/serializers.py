@@ -86,3 +86,24 @@ class ProductDetailResponseSerializer(serializers.Serializer):
                 "averageRating": avg_rating
             }
         }
+
+
+
+
+class ProductListSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'price', 'discount', 'image']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.main_image and hasattr(obj.main_image, 'url'):
+            return request.build_absolute_uri(obj.main_image.url)
+        if obj.image_url:
+            return obj.image_url
+        media = obj.media.first()
+        if media and hasattr(media.file, 'url'):
+            return request.build_absolute_uri(media.file.url)
+        return None

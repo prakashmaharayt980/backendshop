@@ -2,8 +2,10 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .viewsPromoCode import validate_promocode
 
+
+from .viewsPromoCode import validate_promocode
+from .viewsTopproductCatogories import top_by_category
 from .addcartQuery import add_to_cart, get_cart
 from .wishlistQuery import add_to_wishlist, delete_from_wishlist, get_wishlist
 from .orderviews import OrderCreateView, OrderListView,AdminOrderListView, AdminOrderDetailView,AdminOrderStatusUpdateView
@@ -17,6 +19,7 @@ from .views import (
     ProductReviewListView,
 )
 
+from .analayticsView import AnalyticsAPIView
 urlpatterns = [
     path('products/', ProductListView.as_view(), name='product-list'),
     path('products/<str:id>/', ProductDetailView.as_view(), name='product-detail'),
@@ -43,8 +46,10 @@ urlpatterns = [
     path('cart/get/', get_cart, name='get_cart'),
     path('wishlist/get/', get_wishlist, name='get_wishlist'),
 
-
-
+   
+    path('analytics/', AnalyticsAPIView.as_view(), name='analytics'),
+  
+   path('top-by-category/', top_by_category, name='top-by-category'),
     # promo
     path('apply/promocode/', validate_promocode, name='validate_promocode'),
 ]

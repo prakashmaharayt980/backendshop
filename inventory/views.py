@@ -12,7 +12,7 @@ from .serializers import ProductSerializer, ProductReviewSerializer
 from django.conf import settings
 from django.db.models import Avg
 
-import pdb  # Python debugger
+import pdb
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
@@ -31,7 +31,6 @@ class ProductListView(generics.ListAPIView):
                 Q(madeinwhere__icontains=search_query)
             )
 
-        # Keep existing specific filters
         filters = {
             'name': ('name__icontains', str),
             'category': ('category__icontains', str),
@@ -56,11 +55,8 @@ class ProductListView(generics.ListAPIView):
         return queryset
     
 class ProductDetailView(APIView):
-    
-    
     def get(self, request, id, *args, **kwargs):
         try:
-            # Retrieve the product instance (adjust pk field as necessary)
             product = Product.objects.get(id=id)
         except Product.DoesNotExist:
             return Response(
@@ -72,48 +68,30 @@ class ProductDetailView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
         
-        # Serialize the product data (this serializer includes nested fields e.g., media and reviews)
         serializer = ProductSerializer(product,context={'request':request})
         
-        # Aggregate meta information from related reviews
         total_reviews = product.reviews.count()
         average_rating = product.reviews.aggregate(avg_rating=Avg('rating'))['avg_rating'] or 0
-        # Round the average rating to one decimal place if it's non-zero
         average_rating = round(average_rating, 1) if average_rating else average_rating
         
         response_data = {
-       "product": serializer.data,
-                "totalReviews": total_reviews,
-                    "averageRating": average_rating
+            "product": serializer.data,
+            "totalReviews": total_reviews,
+            "averageRating": average_rating
         }
         return Response(response_data, status=status.HTTP_200_OK)
 
-
-
-
 class ProductCreateView(generics.CreateAPIView):
-    """
-    POST /products/
-    Expects multipart/form-data with:
-      - all Product fields (name, author, genre, …)
-      - media_files[] (one or more file inputs named media_files)
-    """
     serializer_class = ProductSerializer
     parser_classes = [MultiPartParser, FormParser]
-    print('test')
+    
     def post(self, request, *args, **kwargs):
-        # logger.info(f"Received product creation request with data: {request.data}")
-        print('test1')
         try:
-            # Copy request data and gather files for 'media_files'
             data = request.data.copy()
-            files = request.FILES.getlist('media_files')
+            files = request.FILES.getlist('media')
             data.setlist('media_files', files)
             
             logger.debug(f"Processing files: {[f.name for f in files]}")
-            
-            # Uncomment next line to set a breakpoint for debugging
-            # pdb.set_trace()
             
             serializer = self.get_serializer(data=data)
             if serializer.is_valid():
@@ -137,7 +115,6 @@ class ProductCreateView(generics.CreateAPIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
-
 class ProductUpdateView(generics.UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -148,7 +125,6 @@ class ProductUpdateView(generics.UpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         if serializer.is_valid():
-            # You may also need to validate file uploads here
             instance = serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -158,11 +134,8 @@ class ProductDeleteView(generics.DestroyAPIView):
     serializer_class = ProductSerializer
     lookup_field = 'id'
 
-
-
 class ProductReviewCreateView(APIView):
     def post(self, request, *args, **kwargs):
-        # Check for authentication
         if not request.user or not request.user.is_authenticated:
             return Response({'error': 'Authentication is required to submit a review.'}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -184,26 +157,19 @@ class ProductReviewCreateView(APIView):
 
         serializer = ProductReviewSerializer(data=review_data)
         if serializer.is_valid():
-            # Save the review with the authenticated user
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class ProductReviewListView(APIView):
-    """
-    View to list all reviews for a given product.
-    Expects a URL parameter 'product_id' that corresponds to the Product's UUID.
-    """
-
     def get(self, request, product_id, *args, **kwargs):
         try:
             product = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             return Response({'error': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-        reviews = product.reviews.all()  # Using the related_name defined in the ProductReview model
+        reviews = product.reviews.all()
         serializer = ProductReviewSerializer(reviews, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-        
+

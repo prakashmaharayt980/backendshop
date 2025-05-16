@@ -8,6 +8,8 @@ ORDER_STATUS_CHOICES = (
     ('processing', 'Processing'),
     ('completed', 'Completed'),
     ('cancelled', 'Cancelled'),
+    ('shipped', 'Shipped'),
+    ('delivered', 'Delivered'),
 )
 
 class Order(models.Model):
