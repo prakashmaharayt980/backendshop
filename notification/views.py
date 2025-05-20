@@ -47,91 +47,124 @@ def register_device(request):
         keeper.save()
     return Response({'status': 'registered'})
 
+
 @api_view(['POST'])
 @permission_classes([permissions.IsAdminUser])
 def send_notification(request):
-    data = request.data
-    notif_type   = data.get('type')
-    title        = data.get('title')
-    body         = data.get('body')
-    order_id     = data.get('order_id')
-    raw_send_all = data.get('send_all', False)
-    status_str   = data.get('status', '')
+   
+    data        = request.data
+    notif_type  = data.get('type')
+    title       = data.get('title')
+    body        = data.get('body')
+    order_id    = data.get('order_id')
+    status_str  = data.get('status', '')
 
-    if isinstance(raw_send_all, bool):
-        send_all = raw_send_all
-    elif isinstance(raw_send_all, str):
-        send_all = raw_send_all.lower() in ('true','1','yes')
-    else:
-        send_all = bool(raw_send_all)
+
+    tokens = []
+    target_users = []
 
     if notif_type == Notification.TYPE_ORDER and order_id:
-        send_all = False
         order = Order.objects.get(pk=order_id)
+        target_users = [order.user]
         devices = FcmDevice.objects.filter(user=order.user)
-        items_qs = order.items.all()
-        items_data = OrderItemSerializer(items_qs, many=True, context={'request': request}).data
-        address = order.shipping_address
-    else:
-        user_id = data.get('user_id')
-        if user_id:
-            send_all = False
-            devices = FcmDevice.objects.filter(user__id=user_id)
-        elif send_all:
-            devices = FcmDevice.objects.all()
-        else:
-            return Response({'error':'`order_id`, `user_id`, or `send_all:true` required'},
-                            status=status.HTTP_400_BAD_REQUEST)
-        items_data = data.get('order_items', [])
-        address = data.get('address', '')
+        tokens = [d.token for d in devices]
 
-    tokens = [d.token for d in devices]
-    if not tokens:
-        return Response({'error':'No device tokens found.'}, status=status.HTTP_404_NOT_FOUND)
+        # prepare order-specific payload
+        items_data = OrderItemSerializer(order.items.all(), many=True, context={'request': request}).data
+        address    = order.shipping_address
 
-    data_payload = {'type': notif_type, 'sent_by': str(request.user.id)}
-    if status_str:
-        data_payload['status'] = status_str
-    if notif_type == Notification.TYPE_ORDER:
-        data_payload.update({
+        data_payload = {
+            'type': notif_type,
+            'sent_by': str(request.user.id),
             'order_id': order_id,
             'order_items': items_data,
             'address': address,
-        })
+        }
 
-    notifications = []
-    for user in {d.user for d in devices}:
-        notifications.append(Notification(
+    else:
+        # fallback: send_all or user_id
+        send_all = str(data.get('send_all', '')).lower() in ['true','1','yes']
+        user_id  = data.get('user_id')
+
+        if user_id:
+            target_users = [Order.objects.none().model.objects.get(pk=user_id)]
+        elif send_all:
+            target_users = list({d.user for d in FcmDevice.objects.all()})
+        else:
+            return Response(
+                {'error':'`order_id`, `user_id`, or `send_all:true` required'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # gather tokens
+        devices = FcmDevice.objects.filter(user__in=target_users)
+        tokens  = [d.token for d in devices]
+
+        data_payload = {
+            'type': notif_type,
+            'sent_by': str(request.user.id),
+        }
+
+    # include status if given
+    if status_str:
+        data_payload['status'] = status_str
+
+    # 1) Persist in DB for **all** target_users
+    notifications = [
+        Notification(
             user=user,
             notif_type=notif_type,
             title=title,
             body=body,
             status=status_str,
             data=data_payload
-        ))
+        )
+        for user in target_users
+    ]
     Notification.objects.bulk_create(notifications)
 
-    notification_msg = messaging.Notification(title=title, body=body)
+    # 2) Attempt push only if we have tokens
     success = failure = 0
-    for token in tokens:
-        try:
-            messaging.send(messaging.Message(token=token, notification=notification_msg, data=data_payload))
-            success += 1
-        except messaging.UnregisteredError:
-            FcmDevice.objects.filter(token=token).delete()
-            failure += 1
-        except Exception:
-            failure += 1
+    if tokens:
+        notif_msg = messaging.Notification(title=title, body=body)
+        for token in tokens:
+            try:
+                messaging.send(
+                    messaging.Message(
+                        token=token,
+                        notification=notif_msg,
+                        data=data_payload
+                    )
+                )
+                success += 1
+            except messaging.UnregisteredError:
+                # token no longer valid, clean up
+                FcmDevice.objects.filter(token=token).delete()
+                failure += 1
+            except Exception:
+                failure += 1
+        push_status = 'pushed'
+    else:
+        # user has no tokens (denied push or never registered)
+        push_status = 'skipped—no tokens'
 
-    return Response({'status':'completed','success':success,'failure':failure,'requested':len(tokens)})
+    return Response({
+        'status': 'completed',
+        'db_records': len(notifications),
+        'push': push_status,
+        'success': success,
+        'failure': failure,
+    }, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated])
 def notification_history(request):
+   
     qs = Notification.objects.filter(user=request.user).order_by('-created_at')
-    grouped = {'order': [], 'promotion': [], 'system': []}
+    unread_count = qs.filter(read=False).count()
 
+    grouped = {'order': [], 'promotion': [], 'system': []}
     for notif in qs:
         entry = {
             'id':      notif.id,
@@ -146,14 +179,9 @@ def notification_history(request):
             order = Order.objects.get(pk=data['order_id'])
             order_items = OrderItemSerializer(order.items.all(), many=True, context={'request': request}).data
             entry.update({
-            
-                'orders_items':  order_items,
-             
-               
-                'total_amount':  str(order.total_amount),
-          
+                'orders_items': order_items,
+                'total_amount': str(order.total_amount),
                 'address': order.shipping_address,
-    
             })
             if data.get('status'):
                 entry['status'] = data['status']
@@ -163,4 +191,16 @@ def notification_history(request):
 
         grouped[notif.notif_type].append(entry)
 
-    return Response(grouped)
+    return Response({
+        'unread_count': unread_count,
+        'notifications': grouped
+    }, status=status.HTTP_200_OK)
+@api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
+def mark_all_notifications_read(request):
+
+    Notification.objects.filter(user=request.user, read=False).update(read=True)
+
+    qs = Notification.objects.filter(user=request.user).order_by('-created_at')
+    serializer = NotificationSerializer(qs, many=True, context={'request': request})
+    return Response(serializer.data, status=status.HTTP_200_OK)

@@ -29,7 +29,8 @@ class OrderCreateView(generics.CreateAPIView):
           "created_at": order_instance.created_at,
           "sub_total": order_instance.subtotal,
           "shipping_cost": order_instance.shipping_cost,
-          "ReceiverContact": order_instance.receiverContact
+          "ReceiverContact": order_instance.receiverContact,
+          
         }
         return Response(response_data, status=status.HTTP_201_CREATED)
 
@@ -38,7 +39,7 @@ class OrderListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-created_at')
 
 class OrderDetailView(generics.RetrieveAPIView):
     serializer_class = OrderSerializer
@@ -46,14 +47,14 @@ class OrderDetailView(generics.RetrieveAPIView):
     lookup_field = "id"
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-created_at')
 
 class AdminOrderListView(generics.ListAPIView):
     serializer_class = OrderSerializer
     permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
-        return Order.objects.all()
+        return Order.objects.all().order_by('-created_at')
 
 class AdminOrderDetailView(generics.RetrieveAPIView):
     serializer_class = OrderSerializer
@@ -61,7 +62,7 @@ class AdminOrderDetailView(generics.RetrieveAPIView):
     lookup_field = "id"
 
     def get_queryset(self):
-        return Order.objects.all()
+        return Order.objects.all().order_by('-created_at')
 
 class AdminOrderStatusUpdateView(generics.UpdateAPIView):
     queryset = Order.objects.all()

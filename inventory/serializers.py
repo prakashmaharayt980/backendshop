@@ -1,7 +1,7 @@
 from django.db.models import Avg
 from rest_framework import serializers
 from .models import Product, ProductMedia, ProductReview
-
+from .modelcartlist import Wishlist
 class ProductMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductMedia
@@ -25,13 +25,15 @@ class ProductSerializer(serializers.ModelSerializer):
     reviews = ProductReviewSerializer(many=True, read_only=True)
     isNew = serializers.BooleanField(source='is_new', read_only=True)
     finalprice=serializers.SerializerMethodField(read_only=True)
+    is_wishlisted = serializers.SerializerMethodField(read_only=True)
+    image = serializers.SerializerMethodField()
     class Meta:
         model = Product
         fields = [
             'id', 'name', 'description', 'price', 'discount', 'stock', 'rating',
             'image_url', 'isNew', 'author', 'genre', 'totalpage', 'language',
             'madeinwhere', 'ageproduct', 'media', 'reviews', 'media_files','category',
-            'finalprice'
+            'finalprice','is_wishlisted','image'
 
         ]
 
@@ -69,6 +71,24 @@ class ProductSerializer(serializers.ModelSerializer):
                 description=f"Uploaded {f.name}"
             )
         return instance
+    
+    def get_is_wishlisted(self, obj):
+        request = self.context.get('request', None)
+        user = getattr(request, 'user', None)
+        if not user or not user.is_authenticated:
+            return False
+        return Wishlist.objects.filter(user=user, product=obj).exists()
+    
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.main_image and hasattr(obj.main_image, 'url'):
+            return request.build_absolute_uri(obj.main_image.url)
+        if obj.image_url:
+            return obj.image_url
+        media = obj.media.first()
+        if media and hasattr(media.file, 'url'):
+            return request.build_absolute_uri(media.file.url)
+        return None
 
 class ProductDetailResponseSerializer(serializers.Serializer):
     status = serializers.IntegerField(default=200)
@@ -91,13 +111,19 @@ class ProductDetailResponseSerializer(serializers.Serializer):
 
 
 class ProductListSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-
+    image_url = serializers.SerializerMethodField()
+    finalprice=serializers.SerializerMethodField(read_only=True)
+    is_wishlisted = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'discount', 'image']
-
-    def get_image(self, obj):
+        fields = ['id', 'name', 'price', 'discount', 'image_url',  'rating',  'is_wishlisted', 'category',    'finalprice']
+    
+    def get_finalprice(self,obj):
+        discount_pct =float(obj.discount or 0)
+        price =float (obj.price)
+        return round(price * (1 - discount_pct / 100), 2)
+    
+    def get_image_url(self, obj):
         request = self.context.get('request')
         if obj.main_image and hasattr(obj.main_image, 'url'):
             return request.build_absolute_uri(obj.main_image.url)
@@ -107,3 +133,10 @@ class ProductListSerializer(serializers.ModelSerializer):
         if media and hasattr(media.file, 'url'):
             return request.build_absolute_uri(media.file.url)
         return None
+    
+    def get_is_wishlisted(self, obj):
+        request = self.context.get('request', None)
+        user = getattr(request, 'user', None)
+        if not user or not user.is_authenticated:
+            return False
+        return Wishlist.objects.filter(user=user, product=obj).exists()

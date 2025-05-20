@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from django.contrib.auth import authenticate, get_user_model
 
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -11,6 +11,7 @@ from .serializer import (
     AdminRegisterSerializer,
     LoginSerializer,
     UserSerializer,
+    ProfileUpdateSerializer
 )
 from .admin import EmailBackend  # for admin login
 
@@ -102,3 +103,16 @@ class AdminUserDetailView(generics.RetrieveAPIView):
     permission_classes = [IsAdminUser]
     lookup_field = 'pk'
 
+class UserProfileView(generics.RetrieveUpdateAPIView):
+  
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return UserSerializer
+        return ProfileUpdateSerializer
+
+    def get_object(self):
+        # always operate on the current user
+        return self.request.user

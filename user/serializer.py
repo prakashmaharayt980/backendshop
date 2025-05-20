@@ -60,3 +60,7 @@ class UserSerializer(serializers.ModelSerializer):
             'is_staff',
             'is_superuser',
         )
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('name', 'address', 'phone_number')

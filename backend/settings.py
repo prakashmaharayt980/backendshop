@@ -43,13 +43,13 @@ ALLOWED_METHODS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    # 'http://localhost:8080',
-    # 'http://localhost:8001',
-    # 'http://localhost:8080',
-    # 'http://your-production-url.com',
-    # 'http://127.0.0.1',
-    # 'http://127.0.0.1:8000',
-    # 'http://127.0.0.1:8080'
+    'http://localhost:8080',
+    'http://localhost:8001',
+    'http://localhost:8080',
+    'http://your-production-url.com',
+    'http://127.0.0.1',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8080',
 
 
     'https://shopkeeper-admin.vercel.app',
@@ -78,7 +78,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
  'rest_framework.authtoken',
-
+ 'rest_framework_simplejwt.token_blacklist', 
    'notification',
     'inventory',
     'user',

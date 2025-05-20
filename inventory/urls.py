@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 
 from .viewsPromoCode import validate_promocode
-from .viewsTopproductCatogories import top_by_category
+from .viewsTopproductCatogories import top_by_category,HomepageImageListCreateView,HomepageImageDeleteView
+
 from .addcartQuery import add_to_cart, get_cart
 from .wishlistQuery import add_to_wishlist, delete_from_wishlist, get_wishlist
 from .orderviews import OrderCreateView, OrderListView,AdminOrderListView, AdminOrderDetailView,AdminOrderStatusUpdateView
@@ -17,11 +18,14 @@ from .views import (
     ProductDeleteView,
     ProductReviewCreateView,
     ProductReviewListView,
+    like_product_review,
+    AdminProductListView
 )
 
 from .analayticsView import AnalyticsAPIView
 urlpatterns = [
     path('products/', ProductListView.as_view(), name='product-list'),
+    path('admin/products/', AdminProductListView.as_view(), name='product-list-admin'),
     path('products/<str:id>/', ProductDetailView.as_view(), name='product-detail'),
     path('productAdd/', ProductCreateView.as_view(), name='product-add'),
     path('products/update/<str:id>/', ProductUpdateView.as_view(), name='product-update'),
@@ -39,7 +43,11 @@ urlpatterns = [
     # review
     path('createreview/', ProductReviewCreateView.as_view(), name='create-product-review'),
     path('reviews/<uuid:product_id>/', ProductReviewListView.as_view(), name='list-product-reviews'),
-
+  path(
+        'reviews/<uuid:review_id>/like/',
+        like_product_review,
+        name='like_product_review'
+    ),
     path('wishlist/add/', add_to_wishlist, name='add_to_wishlist'),
      path('wishlist/delete/', delete_from_wishlist, name='delete_from_wishlist'),
     path('cart/add/', add_to_cart, name='add_to_cart'),
@@ -50,8 +58,11 @@ urlpatterns = [
     path('analytics/', AnalyticsAPIView.as_view(), name='analytics'),
   
    path('top-by-category/', top_by_category, name='top-by-category'),
+   path('homepageImagedata/', HomepageImageListCreateView.as_view(), name='homepage_images'),
+   path('homepageImagedata/<str:id>/', HomepageImageDeleteView.as_view(), name='homepage_images'),
     # promo
     path('apply/promocode/', validate_promocode, name='validate_promocode'),
+  
 ]
 
 

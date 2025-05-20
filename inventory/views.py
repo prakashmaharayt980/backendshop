@@ -1,23 +1,24 @@
 from venv import logger
-from django.db import connection
+
 from django.db.models import Q
 from rest_framework import generics, status
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.exceptions import ValidationError
+
 from .models import Product
-from .serializers import ProductSerializer, ProductReviewSerializer
-
-from django.conf import settings
+from .serializers import ProductSerializer, ProductReviewSerializer,ProductListSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from .models import ProductReview
 from django.db.models import Avg
+from django.db.models import F
 
-import pdb
 class ProductListView(generics.ListAPIView):
-    serializer_class = ProductSerializer
+    serializer_class = ProductListSerializer
 
     def get_queryset(self):
-        queryset = Product.objects.all().order_by('-id')
+        queryset = Product.objects.all().order_by('-created_at')
         search_query = self.request.query_params.get('search', '')
 
         if search_query:
@@ -28,15 +29,22 @@ class ProductListView(generics.ListAPIView):
                 Q(description__icontains=search_query) |
                 Q(category__icontains=search_query) |
                 Q(language__icontains=search_query) |
-                Q(madeinwhere__icontains=search_query)
+                Q(madeinwhere__icontains=search_query)|
+                Q(price__icontains=search_query)
+
             )
 
         filters = {
             'name': ('name__icontains', str),
+            'author': ('author__icontains', str),
             'category': ('category__icontains', str),
+            'genre': ('genre__icontains', str),
+            'description': ('description__icontains', str),
+            'language': ('language__icontains', str),
+            'madeinwhere': ('madeinwhere__icontains', str),
             'price': ('price', float),
             'status': ('status', str),
-            'created_at': ('created_at', str),  
+            'created_at': ('created_at', str),
             'id': ('id', str),
         }
         
@@ -54,6 +62,46 @@ class ProductListView(generics.ListAPIView):
 
         return queryset
     
+class AdminProductListView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]  
+
+    def get_queryset(self):
+        queryset = Product.objects.all().order_by('-created_at')
+        search_query = self.request.query_params.get('search', '')
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(author__icontains=search_query) |
+                Q(category__icontains=search_query) |
+                Q(price__icontains=search_query) |
+                Q(stock__icontains=search_query) |
+                Q(status__icontains=search_query)
+            )
+
+        # Add filters specifically for admin view
+        filters = {
+            'id': ('id', str),
+            'name': ('name__icontains', str),
+            'status': ('status', str),
+            'stock': ('stock', int),
+            'price_min': ('price__gte', float),
+            'price_max': ('price__lte', float),
+            'created_after': ('created_at__gte', str),
+            'created_before': ('created_at__lte', str),
+        }
+
+        for param, (filter_name, type_cast) in filters.items():
+            value = self.request.query_params.get(param)
+            if value:
+                try:
+                    queryset = queryset.filter(**{filter_name: type_cast(value)})
+                except (ValueError, TypeError):
+                    continue
+
+        return queryset
+
 class ProductDetailView(APIView):
     def get(self, request, id, *args, **kwargs):
         try:
@@ -172,4 +220,23 @@ class ProductReviewListView(APIView):
         serializer = ProductReviewSerializer(reviews, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def like_product_review(request, review_id):
+  
+    try:
+        review = ProductReview.objects.get(id=review_id)
+    except ProductReview.DoesNotExist:
+        return Response({'error': 'Review not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+    # Atomic increment
+    review.likes = F('likes') + 1
+    review.save()
+    review.refresh_from_db()
+
+    return Response({
+        'id': str(review.id),
+        'likes': review.likes
+    }, status=status.HTTP_200_OK)
 
