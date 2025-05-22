@@ -20,7 +20,7 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 # FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
-FIREBASE_SERVICE_ACCOUNT_KEY= json.loads(os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON"))
+# FIREBASE_SERVICE_ACCOUNT_KEY= json.loads(os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON"))
 ALLOWED_HOSTS = [
 
    "thelocalmarket.shop",

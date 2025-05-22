@@ -13,7 +13,7 @@ from .models import FcmDevice, Notification
 from .serializers import FcmDeviceSerializer, NotificationSerializer
 from inventory.ordermodels import Order
 from inventory.orderserializers import OrderItemSerializer
-
+import os
 # if not firebase_admin._apps:
 #     key = settings.FIREBASE_SERVICE_ACCOUNT_KEY
 #     if key.strip().startswith('{'):
@@ -24,12 +24,18 @@ from inventory.orderserializers import OrderItemSerializer
 #     firebase_admin.initialize_app(cred)
 
 
-if not firebase_admin._apps:
+firebase_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON")
+
+if firebase_json:
     try:
-        cred = credentials.Certificate(settings.FIREBASE_SERVICE_ACCOUNT_KEY)
-        firebase_admin.initialize_app(cred)
-    except Exception as e:
-        print(f"Error initializing Firebase Admin SDK: {e}")
+        FIREBASE_SERVICE_ACCOUNT_KEY = json.loads(firebase_json)
+    except json.JSONDecodeError:
+        FIREBASE_SERVICE_ACCOUNT_KEY = None
+        print("❌ ERROR: Firebase JSON is invalid.")
+else:
+    FIREBASE_SERVICE_ACCOUNT_KEY = None
+    print("❌ ERROR: FIREBASE_SERVICE_ACCOUNT_JSON not set.")
+
 
 
 @api_view(['POST'])
