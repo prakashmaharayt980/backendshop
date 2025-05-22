@@ -21,13 +21,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
 ALLOWED_HOSTS = [
 
-    'backendshop-production-0a96.up.railway.app',
-    'bookheavenshop.vercel.app',
-    'shopkeeper-admin.vercel.app',
-    'shopkeeper-admin',
-    '.vercel.app',
-    'bookheavenshop'
-    ,'*'
+   "thelocalmarket.shop",
+    "admin-localmarket.vercel.app",
 ]
 
 ALLOWED_METHODS = [
@@ -43,19 +38,8 @@ ALLOWED_METHODS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://localhost:8001',
-    'http://localhost:8080',
-    'http://your-production-url.com',
-    'http://127.0.0.1',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:8080',
-
-
-    'https://shopkeeper-admin.vercel.app',
-'https://book-heaven-nine.vercel.app'
-    
-
+"https://www.thelocalmarket.shop",
+"https://admin-localmarket.vercel.app"
 
 ]
 
