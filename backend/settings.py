@@ -10,6 +10,7 @@ import os
 from datetime import timedelta
 from decouple import config, Csv
 import dj_database_url
+import json
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,7 +19,8 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
+# FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
+FIREBASE_SERVICE_ACCOUNT_KEY= json.loads(os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON"))
 ALLOWED_HOSTS = [
 
    "thelocalmarket.shop",
@@ -109,8 +111,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+# DATABASES = {
+#     'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a.singapore-postgres.render.com/thelocalmarketdbname')
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a.singapore-postgres.render.com/thelocalmarketdbname')
+    'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
 }
 
 # DATABASES = {
@@ -224,3 +230,4 @@ LOGGING = {
   'handlers': { 'console': { 'class': 'logging.StreamHandler' } },
   'root': { 'handlers': ['console'], 'level': 'DEBUG' },
 }
+  
