@@ -25,6 +25,7 @@ ALLOWED_HOSTS = [
 
    "thelocalmarket.shop",
     "admin-localmarket.vercel.app",
+    "backendshop-oy2c.onrender.com"
 ]
 
 ALLOWED_METHODS = [
@@ -41,7 +42,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
 "https://www.thelocalmarket.shop",
-"https://admin-localmarket.vercel.app"
+"https://admin-localmarket.vercel.app",
+"https://backendshop-oy2c.onrender.com"
 
 ]
 
