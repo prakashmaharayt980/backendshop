@@ -19,14 +19,14 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
+# FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
 # FIREBASE_SERVICE_ACCOUNT_KEY= json.loads(os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON"))
 ALLOWED_HOSTS = [
 
    "thelocalmarket.shop",
     "admin-localmarket.vercel.app",
     "backendshop-oy2c.onrender.com",
-    "*"
+
 ]
 
 ALLOWED_METHODS = [
@@ -45,8 +45,8 @@ CORS_ALLOWED_ORIGINS = [
 "https://www.thelocalmarket.shop",
 "https://admin-localmarket.vercel.app",
 "https://backendshop-oy2c.onrender.com",
-" http://localhost:8001",
-" http://localhost:8080",
+# " http://localhost:8001",
+# " http://localhost:8080",
 
 ]
 
@@ -120,9 +120,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a.singapore-postgres.render.com/thelocalmarketdbname')
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
-# }
+DATABASES = {
+    'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
+}
 
 # DATABASES = {
 #     'default': {
@@ -131,16 +131,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': config('DB_HOST', default='localhost'),
+#         'PORT': config('DB_PORT', default='5432'),
+#     }
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
