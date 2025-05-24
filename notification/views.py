@@ -14,27 +14,27 @@ from .serializers import FcmDeviceSerializer, NotificationSerializer
 from inventory.ordermodels import Order
 from inventory.orderserializers import OrderItemSerializer
 import os
-# if not firebase_admin._apps:
-#     key = settings.FIREBASE_SERVICE_ACCOUNT_KEY
-#     if key.strip().startswith('{'):
-#         svc = json.loads(key)
-#         cred = credentials.Certificate(svc)
-#     else:
-#         cred = credentials.Certificate(key)
-#     firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    key = settings.FIREBASE_SERVICE_ACCOUNT_KEY
+    if key.strip().startswith('{'):
+        svc = json.loads(key)
+        cred = credentials.Certificate(svc)
+    else:
+        cred = credentials.Certificate(key)
+    firebase_admin.initialize_app(cred)
 
 
-firebase_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON")
+# firebase_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON")
 
-if firebase_json:
-    try:
-        FIREBASE_SERVICE_ACCOUNT_KEY = json.loads(firebase_json)
-    except json.JSONDecodeError:
-        FIREBASE_SERVICE_ACCOUNT_KEY = None
-        print("❌ ERROR: Firebase JSON is invalid.")
-else:
-    FIREBASE_SERVICE_ACCOUNT_KEY = None
-    print("❌ ERROR: FIREBASE_SERVICE_ACCOUNT_JSON not set.")
+# if firebase_json:
+#     try:
+#         FIREBASE_SERVICE_ACCOUNT_KEY = json.loads(firebase_json)
+#     except json.JSONDecodeError:
+#         FIREBASE_SERVICE_ACCOUNT_KEY = None
+#         print("❌ ERROR: Firebase JSON is invalid.")
+# else:
+#     FIREBASE_SERVICE_ACCOUNT_KEY = None
+#     print("❌ ERROR: FIREBASE_SERVICE_ACCOUNT_JSON not set.")
 
 
 

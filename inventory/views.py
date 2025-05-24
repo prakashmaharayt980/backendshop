@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import ProductReview
 from django.db.models import Avg
 from django.db.models import F
-
+import os
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductListSerializer
 
@@ -170,17 +170,47 @@ class ProductUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
 
     def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-        if serializer.is_valid():
-            instance = serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            instance = self.get_object()
+            data = request.data.copy()
+
+        
+            if 'media' in request.FILES:
+                files = request.FILES.getlist('media')
+              
+                data.setlist('media_files', files)
+           
+            serializer = self.get_serializer(instance, data=data, partial=True)
+            if serializer.is_valid():
+                product = serializer.save()
+               
+                return Response(self.get_serializer(product).data)
+            else:
+               
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except Exception as e:
+           
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class ProductDeleteView(generics.DestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = 'id'
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        media_files = instance.media.all()
+
+        if media_files.exists():
+            for media in media_files:
+                if media.file and hasattr(media.file, 'path') and os.path.isfile(media.file.path):
+                    os.remove(media.file.path)
+                media.delete()
+
+        self.perform_destroy(instance)
+        return Response({'detail': 'Product and related media deleted successfully.'}, status=status.HTTP_200_OK)
 
 class ProductReviewCreateView(APIView):
     def post(self, request, *args, **kwargs):

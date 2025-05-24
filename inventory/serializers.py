@@ -33,7 +33,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'id', 'name', 'description', 'price', 'discount', 'stock', 'rating',
             'image_url', 'isNew', 'author', 'genre', 'totalpage', 'language',
             'madeinwhere', 'ageproduct', 'media', 'reviews', 'media_files','category',
-            'finalprice','is_wishlisted','image'
+            'finalprice','is_wishlisted','image','status'
 
         ]
 
@@ -111,19 +111,19 @@ class ProductDetailResponseSerializer(serializers.Serializer):
 
 
 class ProductListSerializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     finalprice=serializers.SerializerMethodField(read_only=True)
     is_wishlisted = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'discount', 'image_url',  'rating',  'is_wishlisted', 'category',    'finalprice']
+        fields = ['id', 'name', 'price', 'discount', 'image',  'rating',  'is_wishlisted', 'category',    'finalprice']
     
     def get_finalprice(self,obj):
         discount_pct =float(obj.discount or 0)
         price =float (obj.price)
         return round(price * (1 - discount_pct / 100), 2)
     
-    def get_image_url(self, obj):
+    def get_image(self, obj):
         request = self.context.get('request')
         if obj.main_image and hasattr(obj.main_image, 'url'):
             return request.build_absolute_uri(obj.main_image.url)

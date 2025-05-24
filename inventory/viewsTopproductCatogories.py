@@ -23,9 +23,7 @@ CATEGORIES = [
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def top_by_category(request):
-    """
-    Returns up to 4 products per category, ordered by total quantity sold.
-    """
+  
     result = {}
     for cat in CATEGORIES:
         qs = (
