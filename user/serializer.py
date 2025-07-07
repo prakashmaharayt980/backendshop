@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
-from .models import CustomUser
+from django.contrib.auth import get_user_model,authenticate
+from .models import CustomUser,ShopModel
 
 User = get_user_model()
 
@@ -8,7 +8,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('id', 'name', 'email', 'address', 'phone_number', 'password', 'created_at')
         read_only_fields = ('id', 'created_at')
 
@@ -25,7 +25,7 @@ class AdminRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('email', 'password')
 
     def create(self, validated_data):
@@ -37,6 +37,19 @@ class AdminRegisterSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
+
+    def validate(self, attrs):
+        email = attrs.get('email')
+        password = attrs.get('password')
+
+        if email and password:
+            user =authenticate(email=email, password=password)
+            if not user:
+                raise serializers.ValidationError("Invalid email or password")
+            attrs['user'] = user
+        else:
+            raise serializers.ValidationError("Email and password are required")
+        return attrs
 
 class UserSerializer(serializers.ModelSerializer):
     """
@@ -51,16 +64,35 @@ class UserSerializer(serializers.ModelSerializer):
             'address',
             'phone_number',
             'created_at',
-            'is_staff',
-            'is_superuser',
+
         )
         read_only_fields = (
             'id',
             'created_at',
-            'is_staff',
-            'is_superuser',
+   
         )
 class ProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('name', 'address', 'phone_number')
+
+
+
+class ShopSerializer(serializers.ModelSerializer):
+
+    owner_name =serializers.CharField(source='owner.name', read_only=True)
+    class Meta:
+        model =ShopModel
+        fields = [
+            'id', 'store_name', 'category', 'phone_number', 'address', 
+            'email', 'logo_img', 'delivery_option', 'delivery_radius',
+            'instagram', 'facebook', 'twitter', 'is_active', 
+            'created_at', 'updated_at', 'owner_name'
+        ]
+        read_only_fields = ['id', 'created_at', 'updated_at', 'owner_name']
+
+    def create(self, validated_data):
+        validated_data['owner'] = self.context['request'].user
+        return super().create(validated_data)
+
+     

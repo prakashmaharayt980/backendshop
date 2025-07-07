@@ -3,7 +3,7 @@ from django.urls import path, include
 
 from .GoogleLoginView import GoogleLoginAPIView
 
-from .views import RegisterView, AdminRegisterView, AdminLoginView, UserLoginView,  AdminUserListView,AdminUserDetailView,UserProfileView
+from .views import RegisterView, AdminRegisterView, AdminLoginView, UserLoginView,  AdminUserListView,AdminUserDetailView,UserProfileView,ShopDeleteView,ShopupdateView,ShopupdateView,ShopListView, ShopCreateView,AdminShopListView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .v_PasswordRest import RequestPasswordResetOTP, ResetPassword
 
@@ -28,4 +28,18 @@ urlpatterns = [
 
     path('requestOttp/', RequestPasswordResetOTP.as_view(), name='request-reset'),
     path('resetpassword/', ResetPassword.as_view(), name='reset-password'),
+
+
+
+
+       # Shop URLs
+    path('shops/', ShopListView.as_view(), name='shop-list'),
+    path('shops/create/', ShopCreateView.as_view(), name='shop-create'),
+
+    path('shops/<uuid:pk>/', ShopupdateView.as_view(), name='shop-detail'),
+    path('shops/<uuid:pk>/update/', ShopupdateView.as_view(), name='shop-update'),
+    path('shops/<uuid:pk>/delete/', ShopDeleteView.as_view(), name='shop-delete'),
+    
+    path('admin/shopsList/', AdminShopListView.as_view(), name='admin-shop-list'),
+
 ]

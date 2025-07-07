@@ -19,14 +19,14 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure-i0&fgil%q)pv-kcffqm6$^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-# FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
+FIREBASE_SERVICE_ACCOUNT_KEY= os.path.join(BASE_DIR,'./thelocalstorageFirebasekey.json')
 # FIREBASE_SERVICE_ACCOUNT_KEY= json.loads(os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON"))
 ALLOWED_HOSTS = [
 
    "thelocalmarket.shop",
     "admin-localmarket.vercel.app",
     "backendshop-oy2c.onrender.com",
-
+"*"
 ]
 
 ALLOWED_METHODS = [
@@ -45,8 +45,9 @@ CORS_ALLOWED_ORIGINS = [
 "https://www.thelocalmarket.shop",
 "https://admin-localmarket.vercel.app",
 "https://backendshop-oy2c.onrender.com",
-# " http://localhost:8001",
-# " http://localhost:8080",
+" http://localhost:8001",
+" http://localhost:8080",
+'exp://vsw6if0-prakashmahara-8081.exp.direct'
 
 ]
 
@@ -73,9 +74,22 @@ INSTALLED_APPS = [
    'notification',
     'inventory',
     'user',
+    # 'storages'
 ]
 
-MIDDLEWARE = [
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='thelocalmarketshop')
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='e898ab54edbeb40aa33dd855c228e398')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='707878b2d602354b84ec57da28a120bb68eb8caeb35b31a3c7af31091051f1fa')
+# AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', default='https://043d6fcd7a801354563bfe9ec6c6f1f6.r2.cloudflarestorage.com')
+# AWS_S3_SIGNATURE_VERSION = config('AWS_S3_SIGNATURE_VERSION', default='s3v4')
+# AWS_S3_ADDRESSING_STYLE = config('AWS_S3_ADDRESSING_STYLE', default='virtual')
+# AWS_DEFAULT_ACL = None
+# AWS_QUERYSTRING_AUTH = False
+
+
+MIDDLEWARE = [ 
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
@@ -120,27 +134,22 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a.singapore-postgres.render.com/thelocalmarketdbname')
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
+# }
+
+
+
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
+    }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config('DB_NAME'),
-#         'USER': config('DB_USER'),
-#         'PASSWORD': config('DB_PASSWORD'),
-#         'HOST': config('DB_HOST', default='localhost'),
-#         'PORT': config('DB_PORT', default='5432'),
-#     }
-# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -167,6 +176,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL.replace('https://', '')}/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
