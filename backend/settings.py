@@ -46,6 +46,7 @@ CORS_ALLOWED_ORIGINS = [
 "https://www.thelocalmarket.shop",
 "https://admin-localmarket.vercel.app",
 "https://backendshop-oy2c.onrender.com",
+"https://thelocalmerket-olive.vercel.app",
 "https://thelocalmerket-olive.vercel.app"
 # " http://localhost:8001",
 # " http://localhost:8080",
@@ -123,7 +124,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://thelocalmarketusername:OEqn5zbbenqj1hAaB1zuanLxYPAtIeti@dpg-d0nan7emcj7s73dphfd0-a/thelocalmarketdbname')
+    'default': dj_database_url.parse('postgresql://thelocalmarketusername:y0aNMv58MaH4oKHvYIqYZeIxr7jsrfpp@dpg-d1p09jc9c44c7383a6dg-a/thelocalmarketdbname_kqh0')
 }
 
 # DATABASES = {
